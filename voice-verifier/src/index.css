@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 96%;
+    --foreground: 30 10% 20%;
+
+    --card: 40 20% 98%;
+    --card-foreground: 30 10% 20%;
+
+    --popover: 40 20% 98%;
+    --popover-foreground: 30 10% 20%;
+
+    --primary: 28 80% 52%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 35 25% 91%;
+    --secondary-foreground: 30 10% 25%;
+
+    --muted: 35 20% 93%;
+    --muted-foreground: 30 8% 50%;
+
+    --accent: 28 70% 55%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 145 45% 42%;
+    --success-foreground: 145 30% 96%;
+
+    --border: 35 18% 85%;
+    --input: 35 18% 85%;
+    --ring: 28 80% 52%;
+
+    --radius: 0.75rem;
+
+    --glass-bg: 40 20% 99% / 0.65;
+    --glass-border: 35 18% 85% / 0.5;
+    --glass-shadow: 30 15% 30%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: hsla(var(--glass-bg));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsla(var(--glass-border));
+    box-shadow:
+      0 4px 24px -4px hsla(var(--glass-shadow) / 0.08),
+      0 1px 3px hsla(var(--glass-shadow) / 0.04);
+    transition: box-shadow 0.3s ease-out;
+  }
+
+  .glass-card:hover {
+    box-shadow:
+      0 8px 32px -4px hsla(var(--glass-shadow) / 0.12),
+      0 2px 6px hsla(var(--glass-shadow) / 0.06);
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-fade-up-delay {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 1s linear infinite;
+  }
+
+  @keyframes progress-fill {
+    from { width: 0; }
+  }
+
+  .animate-progress {
+    animation: progress-fill 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
